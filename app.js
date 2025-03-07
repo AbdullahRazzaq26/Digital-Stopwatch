@@ -1,4 +1,3 @@
-StopWatch()
 var hours = document.getElementById("hours");
 var mins = document.getElementById("mins");
 var secs = document.getElementById("secs");
