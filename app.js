@@ -25,7 +25,6 @@ function StopWatch() {
             }
         }
 
-        // Manually format numbers to add leading zero
         hours.innerText = (hoursCounter < 10 ? "0" : "") + hoursCounter;
         mins.innerText = (minsCounter < 10 ? "0" : "") + minsCounter;
         secs.innerText = (secsCounter < 10 ? "0" : "") + secsCounter;
@@ -45,15 +44,10 @@ function start() {
 function reset() {
     stop(); 
     hoursCounter = 0;
-<<<<<<< HEAD
     minsCounter = 0;
     secsCounter = 0;
 
     hours.innerText = "00";
     mins.innerText = "00";
     secs.innerText = "00";
-=======
-minsCounter = 0;
-secsCounter = 0;
->>>>>>> f532d1507409c99b7a5cb813873eec89d38f76ef
 }
