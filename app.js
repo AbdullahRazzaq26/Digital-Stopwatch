@@ -1,67 +1,54 @@
-StopWatch()
 var hours = document.getElementById("hours");
 var mins = document.getElementById("mins");
 var secs = document.getElementById("secs");
-var fullDate = document.getElementById("fullDate");
 
 var hoursCounter = 0;
 var minsCounter = 0;
 var secsCounter = 0;
+var secsInterval; 
 
 function StopWatch() {
-    
     secsInterval = setInterval(() => {
+        secsCounter++;
 
-        secsCounter += 1;
-    
         if (secsCounter == 60) {
             secsCounter = 0;
-            minsCounter += 1;
-    
+            minsCounter++;
+
             if (minsCounter == 60) {
                 minsCounter = 0;
-                hoursCounter += 1;
-    
+                hoursCounter++;
+
                 if (hoursCounter == 24) {
                     hoursCounter = 0;
                 }
             }
         }
-    
-        if (secsCounter < 10) {
-            secs.innerText = "0" + secsCounter;
-        } else {
-            secs.innerText = secsCounter;
-        }
-    
-        if (minsCounter < 10) {
-            mins.innerText = "0" + minsCounter + ":";
-        } else {
-            mins.innerText = minsCounter + ":";
-        }
-    
-        if (hoursCounter < 10) {
-            hours.innerText = "0" + hoursCounter + ":";
-        } else {
-            hours.innerText = hoursCounter + ":";
-        }
-    
+
+        // Manually format numbers to add leading zero
+        hours.innerText = (hoursCounter < 10 ? "0" : "") + hoursCounter;
+        mins.innerText = (minsCounter < 10 ? "0" : "") + minsCounter;
+        secs.innerText = (secsCounter < 10 ? "0" : "") + secsCounter;
+
     }, 1000);
 }
 
 function stop() {
     clearInterval(secsInterval);
 }
+
 function start() {
+    stop(); 
     StopWatch();
 }
-function reset() {
-    clearInterval(secsInterval);
-    mins.innerText = 0 + 0 + ":";
-    hours.innerText = 0 + 0 +":";
-    secs.innerText = 0 + 0;
 
+function reset() {
+    stop(); 
     hoursCounter = 0;
-minsCounter = 0;
-secsCounter = 0;
+    minsCounter = 0;
+    secsCounter = 0;
+
+    hours.innerText = "00";
+    mins.innerText = "00";
+    secs.innerText = "00";
 }
